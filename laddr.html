@@ -1,0 +1,25 @@
+<head>
+  <title>laddr</title>
+</head>
+
+<body>
+  <div class="container">
+  <h1>The Laddr.</h1>
+  <div class="jumbotron">
+    <h3>Report Loss</h3>
+    <form class="report-loss">
+      <input type="text" name="text" placeholder="Enter # of cups lost by" />
+      <button class="btn-lg btn-success">I lost shamefully</button>
+    </form>
+  </div>
+  <ul>
+  {{#each bro}}
+  {{>rank}}
+  {{/each}}
+  </ul>
+</div>
+</body>
+
+<template name="rank">
+  <li>{{pName}} - {{score}}</li>
+</template>
