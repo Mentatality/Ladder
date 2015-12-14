@@ -1,9 +1,9 @@
 <template name="rankingsList">
   <div style="container">
-    <ul>
-      {{#each user}}
-        {{>rankings}}
+    <ol>
+      {{#each players}}
+        {{>rankingsItem}}
       {{/each}}
-    </ul>
+    </ol>
   </div>
 </template>

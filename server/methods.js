@@ -16,9 +16,5 @@ Meteor.methods({
       deltaCups: 3,
       createdAt: new Date()
     });
-
-  },
-  checkServer: function () {
-    return "Everything looks ok here";
   }
 });
