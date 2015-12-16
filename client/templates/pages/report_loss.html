@@ -1,9 +1,19 @@
 <template name="reportLoss">
+  <div class="container">
   <div class="jumbotron">
     <h3>Report Loss</h3>
       <form class="report-loss">
-        <input type="text" name="text" placeholder="Enter # of cups lost by" />
+        <select class="form-control">
+          <option>Select a player</option>
+          {{#each players}}
+            {{>nameList}}
+          {{/each}}
+        </select>
+        <br />
+        <input type="text" name="text" class="form-control" placeholder="# of cups" />
+        <br />
         <button class="btn-lg btn-success">I lost shamefully</button>
       </form>
+  </div>
   </div>
 </template>
