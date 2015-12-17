@@ -3,16 +3,30 @@
   <div class="jumbotron">
     <h3>Report Loss</h3>
       <form class="report-loss">
-        <select class="form-control">
-          <option>Select a player</option>
+        <select class="form-control required player-name" id="player-name">
+          <option disabled selected>Select a player</option>
           {{#each players}}
             {{>nameList}}
           {{/each}}
         </select>
         <br />
-        <input type="text" name="text" class="form-control" placeholder="# of cups" />
-        <br />
-        <button class="btn-lg btn-success">I lost shamefully</button>
+<!--        <select class="form-control required" id="cups">
+          <option disabled selected># Cups Lost By</option>
+          <option value=1>1</option>
+          <option value=2>2</option>
+          <option value=3>3</option>
+          <option value=4>4</option>
+          <option value=5>5</option>
+          <option value=6>6</option>
+          <option value=7>7</option>
+          <option value=8>8</option>
+          <option value=9>9</option>
+          <option value=10>10</option>
+          <option value=11>11</option>
+          <option value=12>12</option>
+        </select>
+        <br /> -->
+        <button type="submit" class="btn-lg btn-success report-button">I lost shamefully</button>
       </form>
   </div>
   </div>
