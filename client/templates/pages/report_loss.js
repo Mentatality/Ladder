@@ -6,11 +6,15 @@ Template.reportLoss.helpers({
 
 
 Template.reportLoss.events({
-  'submit form': function() {
+  'submit .report-loss': function(e, tmpl) {
+    e.preventDefault();
     var comment = prompt("You are shamed in your loss. Do you have any comments on the match?");
-    var x = document.getElementById("player-name");
+    var selectedUser = tmpl.find('.player-name :selected').text;
+    var winnerElo = Players.findOne({name: selectedUser}).elo;
+    var loserName = Meteor.user().username;
+    //var loserElo = Players.findOne({name: loserName}).elo;
+    var deltaCups = tmpl.find('.delta-cups :selected').text;
 
-    
-    //call method to log with a (winner elo, loser elo, comment string)
+    Meteor.call("recordLoss", selectedUser, comment, winnerElo, deltaCups, loserName);
   }
 });
