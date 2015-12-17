@@ -1,13 +1,24 @@
 Meteor.methods({
-  recordLoss: function (selectedUser, comment, winnerElo, deltaCups, loserName) {
-    //var elo = Meteor.npmRequire('elo-rank')(15);
-    //var playerA = game.winnerElo;
-    //var playerB = game.loserElo;
+  recordLoss: function (selectedUser, comment, winnerElo, deltaCups, loserName, loserElo) {
+    var elo = Meteor.npmRequire('elo-rank')(15);
+    var expectedScoreA = elo.getExpected(winnerElo,loserElo);
+    var expectedScoreB = elo.getExpected(loserElo,winnerElo);
+    winnerElo = elo.updateRating(expectedScoreA,1,winnerElo);
+    loserElo = elo.updateRating(expectedScoreB,0,loserElo);
 
-    //var expectedScoreA = elo.getExpected(playerA,playerB);
-    //var expectedScoreB = elo.getExpected(playerB,playerA);
-    //playerA = elo.updateRating(expectedScoreA,1,playerA);
-    //playerB = elo.updateRating(expectedScoreB,0,playerB);
+    var winnerCups = parseInt(Players.findOne({name: selectedUser}).cups);
+    var loserCups = parseInt(Players.findOne({name: loserName}).cups);
+    deltaCups = parseInt(deltaCups);
+    
+    Players.update(
+      {name: selectedUser},
+      {$set: {elo: winnerElo, cups: winnerCups += deltaCups}}
+    );
+
+    Players.update(
+      {name: loserName},
+      {$set: {elo: loserElo, cups: loserCups -= deltaCups}}
+    );
 
     Matches.insert({
       winner: selectedUser,

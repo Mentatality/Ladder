@@ -12,9 +12,9 @@ Template.reportLoss.events({
     var selectedUser = tmpl.find('.player-name :selected').text;
     var winnerElo = Players.findOne({name: selectedUser}).elo;
     var loserName = Meteor.user().username;
-    //var loserElo = Players.findOne({name: loserName}).elo;
+    var loserElo = Players.findOne({name: loserName}).elo;
     var deltaCups = tmpl.find('.delta-cups :selected').text;
 
-    Meteor.call("recordLoss", selectedUser, comment, winnerElo, deltaCups, loserName);
+    Meteor.call("recordLoss", selectedUser, comment, winnerElo, deltaCups, loserName, loserElo);
   }
 });
