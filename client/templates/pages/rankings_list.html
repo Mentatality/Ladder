@@ -1,9 +1,22 @@
 <template name="rankingsList">
   <div style="container">
-    <ol>
+    <table class="table table-striped col-md-2">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Score</th>
+          <th>∆ Cups</th>
+        </tr>
+      </thead>
+      <tbody>
       {{#each players}}
-        {{>rankingsItem}}
+      <tr>
+        <td>{{name}}</td>
+        <td>{{elo}}</td>
+        <td>{{cups}}</td>
+      </tr>
       {{/each}}
-    </ol>
+      </tbody>
+    </table>
   </div>
 </template>

@@ -1,5 +1,5 @@
 Template.rankingsList.helpers({
   players: function () {
-    return Players.find({});
+    return Players.find({}, {sort: {elo: -1}});
   }
 });

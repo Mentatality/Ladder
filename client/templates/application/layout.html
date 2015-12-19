@@ -4,10 +4,12 @@
         <div class="navbar-header">
           <a class="navbar-brand" href="{{pathFor 'rankingsList'}}">Ladder</a>
         </div>
+        {{#if currentUser}}
         <ul class="nav navbar-nav">
-          <li class="active"><a href="{{pathFor 'reportLoss'}}">Report Loss</a></li>
-          <li class="inactive"><a href="{{pathFor 'recentMatches'}}">Recent Matches</a></li>
+          <li><a href="{{pathFor 'reportLoss'}}">Report Loss</a></li>
+          <li><a href="{{pathFor 'recentMatches'}}">Recent Matches</a></li>
         </ul>
+        {{/if}}
         <br />
         <ul class="nav navbar-nav">
           <li class>
@@ -18,7 +20,9 @@
     </header>
     <body>
     <div id="main">
+      {{#if currentUser}}
       {{> yield}}
+      {{/if}}
     </div>
   </body>
 </template>

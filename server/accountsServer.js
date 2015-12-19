@@ -1,4 +1,4 @@
-Accounts.onCreateUser(function (user, options) {
+Accounts.onCreateUser(function (options, user) {
   Players.insert({
     name: user.username,
     elo: 1500,
